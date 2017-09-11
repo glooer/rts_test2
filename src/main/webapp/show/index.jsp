@@ -64,6 +64,11 @@ if (!helper.Auth.isOperator(current_user)) {
     <div class="warp">
       <div class="container">
 				<h3>Запросы от пользователей</h3>
+				<div class="js-search">
+					<div class="form-group">
+				    <input required type="text" class="form-control" placeholder="Введите текст для поиска...">
+				  </div>
+				</div>
 				<div class="js-result">
 
 				</div>
@@ -76,6 +81,11 @@ if (!helper.Auth.isOperator(current_user)) {
     <script type="text/javascript">
 			$(function() {
 				$(".js-result").load("/api/statement")
+
+				$(".js-search input").on("change keypress", function(e) {
+					var text = e.target.value;
+					$(".js-result").load("/api/statement?search="  + text)
+				})
 			})
 
 

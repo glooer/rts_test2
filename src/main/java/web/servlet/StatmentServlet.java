@@ -23,15 +23,20 @@ public class StatmentServlet extends HttpServlet {
     ArrayList<Statment> statments = repo.StatmentRepo.search(search);
 
     String res = "";
-    for (Statment statment : statments) {
-      res += "<div class='form-group'>";
-        res += "<div><b>От:</b> " + helper.Auth.getEmailById(statment.getUserId()) + "</div>";
-        res += "<div><b>Кому:</b> " + repo.ReceiverRepo.getById(statment.getReceiverId()) + "</div>";
-        res += "<div><b>ФИО отправителя:</b> " + statment.getFullName() + "</div>";
-        res += "<div><b>Тема:</b> " + statment.getTitle() + "</div>";
-        res += "<div><b>Сообщение:</b> " + statment.getMessage() + "</div>";
-      res += "</div>";
+    if (statments.isEmpty()) {
+      res = "Ничего не найдено.";
+    } else {
+      for (Statment statment : statments) {
+        res += "<div class='form-group'>";
+          res += "<div><b>От:</b> " + helper.Auth.getEmailById(statment.getUserId()) + "</div>";
+          res += "<div><b>Кому:</b> " + repo.ReceiverRepo.getById(statment.getReceiverId()) + "</div>";
+          res += "<div><b>ФИО отправителя:</b> " + statment.getFullName() + "</div>";
+          res += "<div><b>Тема:</b> " + statment.getTitle() + "</div>";
+          res += "<div><b>Сообщение:</b> " + statment.getMessage() + "</div>";
+        res += "</div>";
+      }
     }
+
 
 
     pw.println(res);
