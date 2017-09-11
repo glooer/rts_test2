@@ -1,0 +1,34 @@
+<!DOCTYPE web-app PUBLIC '-//Sun Microsystems, Inc.//DTD
+  Web Application 2.3//EN' 'http://java.sun.com/dtd/web-app_2_3.dtd'>
+
+<web-app>
+  <servlet>
+    <servlet-name>receiver</servlet-name>
+    <servlet-class>web.servlet.ReceiverServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>receiver</servlet-name>
+    <url-pattern>/api/getReceivers</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>statement</servlet-name>
+    <servlet-class>web.servlet.StatmentServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>statement</servlet-name>
+    <url-pattern>/api/statement</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>auth</servlet-name>
+    <servlet-class>web.servlet.AuthServlet</servlet-class>
+  </servlet>
+<servlet-mapping>
+    <servlet-name>auth</servlet-name>
+    <url-pattern>/auth/process</url-pattern>
+  </servlet-mapping>
+
+</web-app>
